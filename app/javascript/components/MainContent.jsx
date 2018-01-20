@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import classNames from 'classnames';
 import Typography from 'material-ui/Typography';
+import axios from 'axios';
 
 import RecipeReviewCard from './RecipeReviewCard';
 
@@ -45,8 +46,21 @@ const styles = theme => ({
 
 class MainContent extends React.Component {
 
-  state = {
-    jokes: ['1','2','3','4','5','6','7','8']
+  constructor(props){
+    super(props);
+    this.state = {
+      jokes: []
+    }
+  }
+
+  componentDidMount() {
+    axios.get('/jokes/list',{
+      responseType: 'json'
+    })
+    .then(res => {
+      const jokes = res.data.jokes;
+      this.setState({ jokes });
+    })
   }
 
   render () {
