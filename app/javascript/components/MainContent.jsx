@@ -4,6 +4,8 @@ import { withStyles } from 'material-ui/styles';
 import classNames from 'classnames';
 import Typography from 'material-ui/Typography';
 
+import RecipeReviewCard from './RecipeReviewCard';
+
 const drawerWidth = 240;
 
 const styles = theme => ({
@@ -16,7 +18,9 @@ const styles = theme => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    height: 'calc(100% - 56px)',
+    overflowY: 'scroll',
+    height: 'calc(100vh - 56px)',
+    maxHeight: 'calc(100vh - 56px)',
     marginTop: 56,
     [theme.breakpoints.up('sm')]: {
       content: {
@@ -41,8 +45,13 @@ const styles = theme => ({
 
 class MainContent extends React.Component {
 
+  state = {
+    jokes: ['1','2','3','4','5','6','7','8']
+  }
+
   render () {
     const { classes } = this.props;
+    const { jokes } = this.state;
     let { open } = this.props;
     return (
       <main
@@ -51,7 +60,12 @@ class MainContent extends React.Component {
           [classes['contentShift-left']]: open,
         })}
       >
-        <Typography>{'You think water moves fast? You should see ice.'}</Typography>
+        {jokes.map((joke, index) => (
+          <RecipeReviewCard
+            key={index}
+            text={joke}
+          />
+        ))}
       </main>
     )
   }
