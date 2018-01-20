@@ -14,19 +14,43 @@ import { render } from 'react-dom';
 import PropTypes from 'prop-types';
 import Grid from 'material-ui/Grid';
 import MenuAppBar from '../components/MenuAppBar';
+import PersistentDrawer from '../components/PersistentDrawer';
 
-function App() {
-  return (
-    <div>
-      <Reboot/>
-      <Grid container spacing={0}>
-        <Grid item xs={12}>
-          <MenuAppBar></MenuAppBar>
+class App extends React.Component {
+  state = {
+    open: false,
+    anchor: 'left',
+  };
+
+  handleDrawerOpen = () => {
+    this.setState({ open: true });
+  };
+
+  handleDrawerClose = () => {
+    this.setState({ open: false });
+  };
+
+  render() {
+    return (
+      <div>
+        <Reboot />
+        <Grid container spacing={0}>
+          <Grid item xs={12}>
+            <MenuAppBar
+              {...this.state}
+              handleDrawerOpen={this.handleDrawerOpen}
+            ></MenuAppBar>
+            <PersistentDrawer 
+              {...this.state}
+              handleDrawerClose={this.handleDrawerClose}
+            />
+          </Grid>
         </Grid>
-      </Grid>
-    </div>
-  );
+      </div>
+    )
+  }
 }
+
 document.addEventListener('DOMContentLoaded', () => {
   render(<App />, document.querySelector('#app'));
 })
