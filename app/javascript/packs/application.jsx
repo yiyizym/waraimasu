@@ -12,9 +12,18 @@ import Reboot from 'material-ui/Reboot';
 import React from 'react';
 import { render } from 'react-dom';
 import PropTypes from 'prop-types';
+import { withStyles } from 'material-ui/styles';
 import Grid from 'material-ui/Grid';
 import MenuAppBar from '../components/MenuAppBar';
 import PersistentDrawer from '../components/PersistentDrawer';
+import MainContent from '../components/MainContent';
+
+const styles = theme => ({
+  wrapper: {
+    display: 'flex',
+    position: 'relative',
+  },
+});
 
 class App extends React.Component {
   state = {
@@ -31,11 +40,16 @@ class App extends React.Component {
   };
 
   render() {
+    const { classes } = this.props;
     return (
       <div>
         <Reboot />
         <Grid container spacing={0}>
-          <Grid item xs={12}>
+          <Grid 
+            item 
+            xs={12}
+            className={classes.wrapper}
+          >
             <MenuAppBar
               {...this.state}
               handleDrawerOpen={this.handleDrawerOpen}
@@ -44,6 +58,9 @@ class App extends React.Component {
               {...this.state}
               handleDrawerClose={this.handleDrawerClose}
             />
+            <MainContent
+              {...this.state}
+            />
           </Grid>
         </Grid>
       </div>
@@ -51,6 +68,8 @@ class App extends React.Component {
   }
 }
 
+const AppStyled = withStyles(styles)(App);
+
 document.addEventListener('DOMContentLoaded', () => {
-  render(<App />, document.querySelector('#app'));
+  render(<AppStyled />, document.querySelector('#app'));
 })

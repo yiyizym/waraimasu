@@ -15,11 +15,6 @@ import Menu, { MenuItem } from 'material-ui/Menu';
 const drawerWidth = 240;
 
 const styles = theme => ({
-  root: {
-    width: '100%',
-  },
-
-  
   appBar: {
     position: 'absolute',
     transition: theme.transitions.create(['margin', 'width'], {
@@ -53,28 +48,26 @@ class MenuAppBar extends React.Component {
     let { open } = this.props;
 
     return (
-      <div className={classes.root}>
-        <AppBar 
-          className={classNames(classes.appBar, {
-            [classes.appBarShift]: open,
-            [classes['appBarShift-left']]: open,
-          })}
-        >
-          <Toolbar disableGutters={!open}>
-            <IconButton
-              color="contrast"
-              aria-label="open drawer"
-              onClick={handleDrawerOpen}
-              className={classNames(classes.menuButton, open && classes.hide)}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Typography type="title" color="inherit" >
-              {open ? 'open': 'close'}
-            </Typography>
-          </Toolbar>
-        </AppBar>
-      </div>
+      <AppBar 
+        className={classNames(classes.appBar, {
+          [classes.appBarShift]: open,
+          [classes['appBarShift-left']]: open,
+        })}
+      >
+        <Toolbar disableGutters={!open}>
+          <IconButton
+            color="contrast"
+            aria-label="open drawer"
+            onClick={handleDrawerOpen}
+            className={classNames(classes.menuButton, open && classes.hide)}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography type="title" color="inherit" >
+            {open ? 'open': 'close'}
+          </Typography>
+        </Toolbar>
+      </AppBar>
     );
   }
 }

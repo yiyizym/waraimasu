@@ -17,11 +17,6 @@ import DraftsIcon from 'material-ui-icons/Drafts';
 const drawerWidth = 240;
 
 const styles = theme => ({
-  root: {
-    width: '100%',
-    zIndex: 1,
-    overflow: 'hidden',
-  },
   drawerPaper: {
     position: 'relative',
     minHeight: '100vh',
@@ -43,7 +38,6 @@ class PersistentDrawer extends React.Component {
     let { open } = this.props;
 
     return (
-      <div className={classes.root}>
         <Drawer
           type="persistent"
           classes={{
@@ -87,7 +81,6 @@ class PersistentDrawer extends React.Component {
             </List>
           </div>
         </Drawer>
-      </div>
     );
   }
 }
