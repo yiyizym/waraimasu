@@ -10,15 +10,11 @@ import ShareIcon from 'material-ui-icons/Share';
 
 const styles = theme => ({
   card: {
-    marginBottom: '20px',
-    '&:last-child': {
-      marginBottom: '0',
-    },
+    
   },
   actions: {
     justifyContent: 'flex-end',
   },
-
 });
 
 class RecipeReviewCard extends React.Component {
