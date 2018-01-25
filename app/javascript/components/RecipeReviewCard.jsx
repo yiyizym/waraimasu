@@ -20,13 +20,13 @@ const styles = theme => ({
 class RecipeReviewCard extends React.Component {
 
   render() {
-    const { classes, text } = this.props;
+    const { classes, joke } = this.props;
 
     return (
       <Card className={classes.card}>
         <CardContent>
           <Typography component="p">
-            {text}
+            {joke.content}
           </Typography>
         </CardContent>
         <CardActions 

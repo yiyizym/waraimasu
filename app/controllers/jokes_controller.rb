@@ -1,6 +1,6 @@
 class JokesController < ApplicationController
   def list
-    jokes = ['1','2','3','4','5','6','7','8','9']
+    jokes = Joke.first_10
     render json: {"return_code":0, "return_info": "success", "jokes": jokes}
   end
 

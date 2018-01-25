@@ -83,7 +83,7 @@ class MainContent extends React.Component {
               card: classes.card,
             }}
             key={index}
-            text={joke}
+            joke={joke}
           />
         ))}
       </main>
