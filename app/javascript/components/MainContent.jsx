@@ -6,6 +6,7 @@ import Typography from 'material-ui/Typography';
 import axios from 'axios';
 
 import RecipeReviewCard from './RecipeReviewCard';
+import Footer from '../components/Footer';
 
 const drawerWidth = 240;
 
@@ -86,6 +87,7 @@ class MainContent extends React.Component {
             joke={joke}
           />
         ))}
+        <Footer />
       </main>
     )
   }

@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import BottomNavigation, { BottomNavigationAction } from 'material-ui/BottomNavigation';
-import RestoreIcon from 'material-ui-icons/Restore';
+import HomeIcon from 'material-ui-icons/Home';
 import FavoriteIcon from 'material-ui-icons/Favorite';
-import LocationOnIcon from 'material-ui-icons/LocationOn';
+import InfoIcon from 'material-ui-icons/Info';
 
 const styles = {
   root: {
@@ -35,9 +35,9 @@ class SimpleBottomNavigation extends React.Component {
         showLabels
         className={classes.root}
       >
-        <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
-        <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
-        <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} />
+        <BottomNavigationAction label="首页" icon={<HomeIcon />} />
+        <BottomNavigationAction label="收藏" icon={<FavoriteIcon />} />
+        <BottomNavigationAction label="关于" icon={<InfoIcon />} />
       </BottomNavigation>
     );
   }

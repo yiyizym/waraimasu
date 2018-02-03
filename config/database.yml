@@ -19,6 +19,8 @@ default: &default
 
 development:
   <<: *default
+  username: development
+  password: development
   database: waraimasu_development
 
 # Warning: The database defined as "test" will be erased and
@@ -50,5 +52,5 @@ test:
 production:
   <<: *default
   database: waraimasu_production
-  username: waraimasu
+  username: <%= ENV['WARAIMASU_DATABASE_USERNAME'] %>
   password: <%= ENV['WARAIMASU_DATABASE_PASSWORD'] %>
