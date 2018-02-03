@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import BottomNavigation, { BottomNavigationAction } from 'material-ui/BottomNavigation';
-import HomeIcon from 'material-ui-icons/Home';
+import EventIcon from 'material-ui-icons/Event';
 import FavoriteIcon from 'material-ui-icons/Favorite';
 import InfoIcon from 'material-ui-icons/Info';
 
@@ -35,7 +35,7 @@ class SimpleBottomNavigation extends React.Component {
         showLabels
         className={classes.root}
       >
-        <BottomNavigationAction label="首页" icon={<HomeIcon />} />
+        <BottomNavigationAction label="今天" icon={<EventIcon />} />
         <BottomNavigationAction label="收藏" icon={<FavoriteIcon />} />
         <BottomNavigationAction label="关于" icon={<InfoIcon />} />
       </BottomNavigation>
