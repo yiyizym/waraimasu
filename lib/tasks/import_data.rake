@@ -1,3 +1,4 @@
+# useage: RAILS_ENV=development rails data:import filename=data.json
 namespace :data do
   desc "import data from json files to database"
   task :import => :environment do
