@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180125002142) do
+ActiveRecord::Schema.define(version: 20180209235658) do
 
   create_table "jokes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "content", null: false
@@ -18,4 +18,26 @@ ActiveRecord::Schema.define(version: 20180125002142) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "user_profiles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "user_id"
+    t.string "avatar", comment: "头像"
+    t.string "name", comment: "姓名"
+    t.string "phone", comment: "手机"
+    t.string "email", comment: "邮箱"
+    t.string "province", comment: "省份"
+    t.string "city", comment: "城市"
+    t.string "address", comment: "地址"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_profiles_on_user_id"
+  end
+
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "wechat_unionid", null: false, comment: "微信用户 UnionID"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["wechat_unionid"], name: "index_users_on_wechat_unionid", unique: true
+  end
+
+  add_foreign_key "user_profiles", "users"
 end
