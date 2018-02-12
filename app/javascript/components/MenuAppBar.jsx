@@ -11,6 +11,7 @@ import AccountCircle from 'material-ui-icons/AccountCircle';
 import Switch from 'material-ui/Switch';
 import { FormControlLabel, FormGroup } from 'material-ui/Form';
 import Menu, { MenuItem } from 'material-ui/Menu';
+import Constant from './constant';
 
 const drawerWidth = 240;
 
@@ -64,7 +65,7 @@ class MenuAppBar extends React.Component {
             <MenuIcon />
           </IconButton>
           <Typography type="title" color="inherit" >
-            {open ? 'open': 'close'}
+            {Constant.siteName}
           </Typography>
         </Toolbar>
       </AppBar>

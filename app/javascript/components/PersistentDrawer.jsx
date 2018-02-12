@@ -11,8 +11,10 @@ import IconButton from 'material-ui/IconButton';
 import MenuIcon from 'material-ui-icons/Menu';
 import ChevronLeftIcon from 'material-ui-icons/ChevronLeft';
 import ChevronRightIcon from 'material-ui-icons/ChevronRight';
-import InboxIcon from 'material-ui-icons/Inbox';
-import DraftsIcon from 'material-ui-icons/Drafts';
+import FavoriteIcon from 'material-ui-icons/Favorite';
+import InfoIcon from 'material-ui-icons/Info';
+import CreateIcon from 'material-ui-icons/Create';
+import Constant from './constant';
 
 const drawerWidth = 240;
 
@@ -49,7 +51,7 @@ class PersistentDrawer extends React.Component {
           <div className={classes.drawerInner}>
             <div className={classes.drawerHeader}>
               <Typography type="title" color="inherit" align="center">
-                drawer
+                {Constant.mainPage}
               </Typography>
               <IconButton onClick={handleDrawerClose}>
                 {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
@@ -59,24 +61,21 @@ class PersistentDrawer extends React.Component {
             <List className={classes.list}>
               <ListItem button>
                 <ListItemIcon>
-                  <InboxIcon />
+                  <FavoriteIcon />
                 </ListItemIcon>
-                <ListItemText primary="Inbox" />
+                <ListItemText primary={Constant.favorite} />
               </ListItem>
               <ListItem button>
                 <ListItemIcon>
-                  <DraftsIcon />
+                  <InfoIcon />
                 </ListItemIcon>
-                <ListItemText primary="Drafts" />
+              <ListItemText primary={Constant.information} />
               </ListItem>
-            </List>
-            <Divider />
-            <List className={classes.list}>
               <ListItem button>
-                <ListItemText primary="Trash" />
-              </ListItem>
-              <ListItem button component="a" href="#simple-list">
-                <ListItemText primary="Spam" />
+                <ListItemIcon>
+                <CreateIcon />
+                </ListItemIcon>
+                <ListItemText primary={Constant.blog} />
               </ListItem>
             </List>
           </div>
