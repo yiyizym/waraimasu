@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   get 'home/index'
 
+  match '/xcx/login', to: 'xcx#login', via: [:get, :post]
+
   match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
   match '/auth/failure', to: 'sessions#failure', via: :get
   delete '/logout', to: 'session#destroy', as: :logout

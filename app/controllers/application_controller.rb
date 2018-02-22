@@ -1,16 +1,14 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  # before_action :authenticate_user!
-
   before_action :detect_device_variant
 
   helper_method :current_user
 
   private
 
-  def authenticate_user!
-    redirect_to root_path unless current_user
+  def user_login?
+    current_user.present?
   end
 
   def current_user

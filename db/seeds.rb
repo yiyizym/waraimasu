@@ -6,11 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-joke = Joke.first
+joke = Joke.create({
+    content: '从小力气就特别大：很多老师都说我一个人就能拖全班的后腿。'
+})
 
 # create user
 user = User.create({
-  wechat_unionid: 'o6_bmasdasdsad6_2sgVt7hMZOPfL'
+  wechat_unionid: 'o6_bmasdasdsad6_2sgVt7hMZOPfL' # fake unionid
 })
 
 user_profile = UserProfile.create({
