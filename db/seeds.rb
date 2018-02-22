@@ -12,7 +12,7 @@ joke = Joke.create({
 
 # create user
 user = User.create({
-  wechat_unionid: 'o6_bmasdasdsad6_2sgVt7hMZOPfL' # fake unionid
+  wechat_openid: 'o9dID6rKACtuY3f1hYilXtHWjYqs' # fake openid
 })
 
 user_profile = UserProfile.create({

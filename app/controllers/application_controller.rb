@@ -12,15 +12,15 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    @_current_user ||= session[:current_user_id] && User.find_by(id: session[:current_user_id])
+    @_current_user ||= session[:current_user_openid] && User.find_by(wechat_openid: session[:current_user_openid])
   end
 
   def user_sign_in(user)
-    session[:current_user_id] = user.id
+    session[:current_user_openid] = user.wechat_openid
   end
 
   def user_sign_out
-    session[:current_user_id] = nil
+    session[:current_user_openid] = nil
     @_current_user = nil
   end
   
