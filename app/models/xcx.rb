@@ -1,15 +1,13 @@
 class Xcx < ApplicationRecord
     def self.login(code)
 
-        resp = HTTP.get("https://api.weixin.qq.com/sns/jscode2session", :params => {appid: ENV['APP_ID'], secret: ENV['APP_SECRET'], js_code: code, grant_type: "authorization_code"})
+        resp = HTTP.get("https://api.weixin.qq.com/sns/jscode2session", :params => {appid: ENV['WARAIMASU_APP_ID'], secret: ENV['WARAIMASU_APP_SECRET'], js_code: code, grant_type: "authorization_code"})
         raise "response error: #{resp}" unless resp.code.equal?(200)
         
-        resp = JSON.parse resp.body
-        raise "business error: #{resp}" unless resp[:openid]
+        user_info = JSON.parse resp.body
+        raise "business error: #{user_info}" unless user_info["openid"]
 
-        session[:current_user_openid] = resp[:session_key]
-
-        {"return_code":0, "return_info": "success"}
+        {"return_code":0, "return_info": "success", "user_info": user_info}
 
     rescue Exception => e
         logger.error e
