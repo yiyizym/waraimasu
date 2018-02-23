@@ -5,9 +5,12 @@ Rails.application.routes.draw do
 
   get 'jokes/share'
 
-  get 'jokes/like'
+  post 'jokes/like'
+  post 'jokes/unlike'
 
   get 'home/index'
+
+  get 'favorites/list'
 
   match '/xcx/login', to: 'xcx#login', via: [:get, :post]
 

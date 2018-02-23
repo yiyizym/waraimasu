@@ -1,5 +1,6 @@
 class JokesController < ApplicationController
-    before_action :authenticate_user!, only: [:like]
+    before_action :authenticate_user!, only: [:like, :unlike]
+    skip_before_action :verify_authenticity_token, only: [:like, :unlike]
     def list
         jokes = Joke.pick_5
         render json: {"return_code":0, "return_info": "success", "jokes": jokes}
@@ -13,16 +14,12 @@ class JokesController < ApplicationController
 
     def like
         return render json: {"return_code": 4000, "return_info": "need joke's id"} unless params[:joke_id]
-        result = Favorite.add(params[:joke_id], current_user.id)
-        {return_code: 0, return_info: 'ok'}
+        render json: Favorite.add(params[:joke_id], current_user.id)
     end
 
-    private
-
-    def authenticate_user!
-        unless user_login?
-            return render json: {return_code: 4001, return_info: 'user not login'}
-        end
+    def unlike
+        return render json: {"return_code": 4000, "return_info": "need joke's id"} unless params[:joke_id]
+        render json: Favorite.remove(params[:joke_id], current_user.id)
     end
 
 end

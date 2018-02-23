@@ -7,6 +7,12 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def authenticate_user!
+    unless user_login?
+      return render json: {return_code: 4001, return_info: 'user not login'}
+    end
+  end
+
   def user_login?
     current_user.present?
   end
