@@ -12,6 +12,8 @@ class JokesController < ApplicationController
     end
 
     def like
+        return render json: {"return_code": 4000, "return_info": "need joke's id"} unless params[:joke_id]
+        result = Favorite.add(params[:joke_id], current_user.id)
         {return_code: 0, return_info: 'ok'}
     end
 
@@ -19,7 +21,7 @@ class JokesController < ApplicationController
 
     def authenticate_user!
         unless user_login?
-            return render json: {return_code: 3000, return_info: 'user not login'}
+            return render json: {return_code: 4001, return_info: 'user not login'}
         end
     end
 
