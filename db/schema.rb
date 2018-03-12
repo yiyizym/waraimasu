@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20180309005602) do
   end
 
   create_table "holidays", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.date "date", null: false, comment: "日期"
+    t.string "date", null: false, comment: "日期"
     t.string "holiday", null: false, comment: "节日名称"
     t.index ["date"], name: "index_holidays_on_date"
   end
