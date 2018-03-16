@@ -6,17 +6,76 @@
 //
 // To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
 // layout file, like app/views/layouts/application.html.erb
+import 'typeface-roboto'
+import Reboot from 'material-ui/Reboot';
 import React from 'react';
 import { render } from 'react-dom';
+import PropTypes from 'prop-types';
+import { withStyles } from 'material-ui/styles';
+import Grid from 'material-ui/Grid';
+import MenuAppBar from '../components/MenuAppBar';
+import PersistentDrawer from '../components/PersistentDrawer';
 import { Router, Route, hashHistory } from 'react-router';
-import Home from '../pages/home';
-// import About from '../pages/about';
+import Jokes from '../components/PCJokesContent';
+import About from '../components/About';
+
+const styles = theme => ({
+  wrapper: {
+    display: 'flex',
+    position: 'relative',
+  },
+});
+
+class App extends React.Component {
+  state = {
+    open: false,
+    anchor: 'left',
+  };
+
+  handleDrawerOpen = () => {
+    this.setState({ open: true });
+  };
+
+  handleDrawerClose = () => {
+    this.setState({ open: false });
+  };
+
+  render() {
+    const { classes } = this.props;
+    return (
+      <div>
+        <Reboot />
+        <Grid container spacing={0}>
+          <Grid
+            item
+            xs={12}
+            className={classes.wrapper}
+          >
+            <MenuAppBar
+              {...this.state}
+              handleDrawerOpen={this.handleDrawerOpen}
+            ></MenuAppBar>
+            <PersistentDrawer
+              {...this.state}
+              handleDrawerClose={this.handleDrawerClose}
+            />
+            {this.props.children}
+          </Grid>
+        </Grid>
+      </div>
+    )
+  }
+}
+
+const AppStyled = withStyles(styles)(App);
 
 document.addEventListener('DOMContentLoaded', () => {
   render((
     <Router history={hashHistory}>
-      <Route path="/" component="Home"/>
-      {/* <Route path="/about" component="About"/> */}
+      <Route path="/" component={AppStyled}>
+        <Route path="/jokes" component={Jokes} />
+        <Route path="/about" component={About} />
+      </Route>
     </Router>
-  ),document.querySelector('#app'));
+  ), document.querySelector('#app'));
 })

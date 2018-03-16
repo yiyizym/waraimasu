@@ -15,6 +15,7 @@ import FavoriteIcon from 'material-ui-icons/Favorite';
 import InfoIcon from 'material-ui-icons/Info';
 import CreateIcon from 'material-ui-icons/Create';
 import Constant from './constant';
+import { Link } from 'react-router'
 
 const drawerWidth = 240;
 
@@ -60,16 +61,20 @@ class PersistentDrawer extends React.Component {
             <Divider />
             <List className={classes.list}>
               <ListItem button>
-                <ListItemIcon>
-                  <FavoriteIcon />
-                </ListItemIcon>
-                <ListItemText primary={Constant.favorite} />
+                <Link to="/jokes">
+                  <ListItemIcon>
+                    <FavoriteIcon />
+                  </ListItemIcon>
+                  <ListItemText primary={Constant.favorite} />
+                </Link>
               </ListItem>
               <ListItem button>
-                <ListItemIcon>
-                  <InfoIcon />
-                </ListItemIcon>
-              <ListItemText primary={Constant.information} />
+                <Link to="/about">
+                  <ListItemIcon>
+                    <InfoIcon />
+                  </ListItemIcon>
+                  <ListItemText primary={Constant.information} />
+                </Link>
               </ListItem>
               <ListItem button>
                 <ListItemIcon>
