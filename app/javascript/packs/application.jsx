@@ -15,7 +15,7 @@ import { withStyles } from 'material-ui/styles';
 import Grid from 'material-ui/Grid';
 import MenuAppBar from '../components/MenuAppBar';
 import PersistentDrawer from '../components/PersistentDrawer';
-import { Router, Route, hashHistory } from 'react-router';
+import { Router, Route, hashHistory, IndexRedirect } from 'react-router';
 import Jokes from '../components/PCJokesContent';
 import About from '../components/About';
 
@@ -42,6 +42,7 @@ class App extends React.Component {
 
   render() {
     const { classes } = this.props;
+    let updatedChildren = React.Children.map(this.props.children, (child) => { return React.cloneElement(child, {open: this.state.open})});
     return (
       <div>
         <Reboot />
@@ -59,7 +60,7 @@ class App extends React.Component {
               {...this.state}
               handleDrawerClose={this.handleDrawerClose}
             />
-            {this.props.children}
+            {updatedChildren}
           </Grid>
         </Grid>
       </div>
@@ -73,6 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
   render((
     <Router history={hashHistory}>
       <Route path="/" component={AppStyled}>
+        <IndexRedirect to="/jokes" />
         <Route path="/jokes" component={Jokes} />
         <Route path="/about" component={About} />
       </Route>

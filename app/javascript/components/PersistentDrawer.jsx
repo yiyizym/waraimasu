@@ -11,6 +11,7 @@ import IconButton from 'material-ui/IconButton';
 import MenuIcon from 'material-ui-icons/Menu';
 import ChevronLeftIcon from 'material-ui-icons/ChevronLeft';
 import ChevronRightIcon from 'material-ui-icons/ChevronRight';
+import ListIcon from 'material-ui-icons/List';
 import FavoriteIcon from 'material-ui-icons/Favorite';
 import InfoIcon from 'material-ui-icons/Info';
 import CreateIcon from 'material-ui-icons/Create';
@@ -60,28 +61,28 @@ class PersistentDrawer extends React.Component {
             </div>
             <Divider />
             <List className={classes.list}>
-              <ListItem button>
                 <Link to="/jokes">
-                  <ListItemIcon>
-                    <FavoriteIcon />
-                  </ListItemIcon>
-                  <ListItemText primary={Constant.favorite} />
+                  <ListItem button>
+                      <ListItemIcon>
+                        <ListIcon />
+                      </ListItemIcon>
+                      <ListItemText primary={Constant.joke} />
+                  </ListItem>
                 </Link>
-              </ListItem>
-              <ListItem button>
                 <Link to="/about">
-                  <ListItemIcon>
-                    <InfoIcon />
-                  </ListItemIcon>
-                  <ListItemText primary={Constant.information} />
+                  <ListItem button>
+                      <ListItemIcon>
+                        <InfoIcon />
+                      </ListItemIcon>
+                      <ListItemText primary={Constant.information} />
+                  </ListItem>
                 </Link>
-              </ListItem>
-              <ListItem button>
+              {/* <ListItem button>
                 <ListItemIcon>
                 <CreateIcon />
                 </ListItemIcon>
                 <ListItemText primary={Constant.blog} />
-              </ListItem>
+              </ListItem> */}
             </List>
           </div>
         </Drawer>
